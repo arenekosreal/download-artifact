@@ -58,7 +58,8 @@ runs:
     - name: 'Untar files'
       shell: bash
       run: |
-        find '${{ inputs.path }}' -type f -name '*.tar' \
+        INPUT_PATH='${{ inputs.path }}'
+        find "${INPUT_PATH:-$GITHUB_WORKSPACE}" -type f -name '*.tar' \
           -printf "Extracting %f..." \
           -execdir tar -xvpf {} \; \
           -printf "Removing %f..." \
