@@ -60,6 +60,6 @@ runs:
       run: |
         find '${{ inputs.path }}' -type f -name '*.tar' \
           -printf "Extracting %f..." \
-          -execdir tar -xvpf {} \
+          -execdir tar -xvpf {} \; \
           -printf "Removing %f..." \
           -delete
