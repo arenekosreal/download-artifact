@@ -60,7 +60,7 @@ runs:
       run: |
         INPUT_PATH='${{ inputs.path }}'
         find "${INPUT_PATH:-$GITHUB_WORKSPACE}" -type f -name '*.tar' \
-          -printf "Extracting %f..." \
+          -printf "Extracting %f...\n" \
           -execdir tar -xvpf {} \; \
-          -printf "Removing %f..." \
+          -printf "Removing %f...\n" \
           -delete
