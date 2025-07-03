@@ -58,11 +58,7 @@ runs:
     - name: 'Untar files'
       shell: bash
       run: |
-        while read -r target
-        do
-          echo "Extracting $target"
-          tar -xvpf "$target" -C "$(dirname "$target")"
-        done < <(find '${{ inputs.path }}' -type f -name '*.tar')
+        find '${{ inputs.path }}' -type f -name '*.tar' -printf "Extracting %f..." -execdir tar -xvpf {}
     - name: 'Remove Tarball'
       shell: bash
       run: |
